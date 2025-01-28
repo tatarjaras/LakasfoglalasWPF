@@ -45,6 +45,12 @@ namespace LakasfoglalasWPF
             var valasz=await client.PostAsync("api/Login/", body);
             var content=await valasz.Content.ReadAsStringAsync();
             MessageBox.Show(content);
+
+
+            LoggedUser bejeletkezett=JsonSerializer.Deserialize<LoggedUser>(content);
+            MessageBox.Show(bejeletkezett.Token);
+
+
         }
 
         private void btnEsc_Click(object sender, RoutedEventArgs e)
