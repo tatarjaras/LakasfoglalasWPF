@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LakasfoglalasBackEnd.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -31,6 +32,13 @@ namespace LakasfoglalasWPF
             var response = await client.PostAsync($"api/Login/SaltRequest/{tbxLoginName.Text}",new StringContent(tbxLoginName.Text,Encoding.UTF8,"text/plain"));
             string salt = await response.Content.ReadAsStringAsync();
             MessageBox.Show(salt);
+
+            string tmpHash=MainWindow.CreateSHA256(tbxPassword.Password+salt);
+            MessageBox.Show(tmpHash);
+            LoginDTO dtoUser= new LoginDTO() { 
+            LoginName = tbxLoginName.Text,
+            TmpHash=tmpHash
+            };
         }
 
         private void btnEsc_Click(object sender, RoutedEventArgs e)
