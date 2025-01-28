@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography;
+﻿using System.Net.Http;
+using System.Security.Cryptography;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -44,6 +45,11 @@ namespace LakasfoglalasWPF
         }
         public static string uId = "";
 
+        public static HttpClient sharedClient = new HttpClient()
+        {
+            BaseAddress = new Uri("http://localhost:5000")
+        };
+
         public MainWindow()
         {
             InitializeComponent();
@@ -52,6 +58,7 @@ namespace LakasfoglalasWPF
         private void MnuLogin_Click(object sender, RoutedEventArgs e)
         {
             Loginwindows loginwindows= new Loginwindows();
+            loginwindows.client = sharedClient;
             loginwindows.ShowDialog();
         }
     }
