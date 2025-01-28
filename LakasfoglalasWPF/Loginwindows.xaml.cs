@@ -47,8 +47,10 @@ namespace LakasfoglalasWPF
             MessageBox.Show(content);
 
 
-            LoggedUser bejeletkezett=JsonSerializer.Deserialize<LoggedUser>(content);
-            MessageBox.Show(bejeletkezett.Token);
+            string[] darabok = content.Split('"');
+            string tokenem = darabok[darabok.Length-2];
+            MessageBox.Show(tokenem);
+            MainWindow.uId = tokenem;
 
 
         }
