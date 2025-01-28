@@ -26,9 +26,9 @@ namespace LakasfoglalasWPF
             InitializeComponent();
         }
 
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        private async void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            
+            var response = await client.PostAsync($"api/Login/GetSalt/{tbxLoginName.Text}",new StringContent(tbxLoginName.Text,Encoding.UTF8,"text/plain");
         }
 
         private void btnEsc_Click(object sender, RoutedEventArgs e)
