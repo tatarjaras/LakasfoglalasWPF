@@ -8,8 +8,8 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Menu>
-            <MenuItem Header="Bejeletkezés" Click="MnuLogin_Click"/>
-            <MenuItem Header="Felhasználók" IsEnabled="False">
+            <MenuItem Header="Bejeletkezés" Click="MnuLogin_Click" Name="MnuLogin"/>
+            <MenuItem Header="Felhasználók" IsEnabled="False" Name="MnuUser">
                 <MenuItem Header="Felhasználók listázása"/>
                 <MenuItem Header="Felhasználók rögzitése"/>
                 <MenuItem Header="Felhasználók módosítása"/>

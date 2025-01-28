@@ -55,11 +55,22 @@ namespace LakasfoglalasWPF
             InitializeComponent();
         }
 
+
+
         private void MnuLogin_Click(object sender, RoutedEventArgs e)
         {
             Loginwindows loginwindows= new Loginwindows();
             loginwindows.client = sharedClient;
             loginwindows.ShowDialog();
+            if (uId!="")
+            {
+                MnuUser.IsEnabled = true;
+                MnuLogin.IsEnabled = false;
+            }
+            else
+            {
+                MessageBox.Show("sikertelen bejelentkezés");
+            }
         }
     }
 }
