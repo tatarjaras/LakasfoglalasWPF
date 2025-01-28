@@ -43,6 +43,8 @@ namespace LakasfoglalasWPF
             string felhAdatok =JsonSerializer.Serialize(dtoUser,JsonSerializerOptions.Default);
             var body =new StringContent(felhAdatok,Encoding.UTF8,"application/json");
             var valasz=await client.PostAsync("api/Login/", body);
+            var content=await valasz.Content.ReadAsStringAsync();
+            MessageBox.Show(content);
         }
 
         private void btnEsc_Click(object sender, RoutedEventArgs e)
