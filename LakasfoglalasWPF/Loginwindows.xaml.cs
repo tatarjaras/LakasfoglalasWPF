@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -39,6 +40,9 @@ namespace LakasfoglalasWPF
             LoginName = tbxLoginName.Text,
             TmpHash=tmpHash
             };
+            string felhAdatok =JsonSerializer.Serialize(dtoUser,JsonSerializerOptions.Default);
+            var body =new StringContent(felhAdatok,Encoding.UTF8,"application/json");
+            var valasz=await client.PostAsync("api/Login/", body);
         }
 
         private void btnEsc_Click(object sender, RoutedEventArgs e)
